@@ -1,0 +1,8 @@
+[
+  "/authenticate",
+  "/signup",
+  "/verify/:hash",
+  "/recovery/:email",
+  "/resend/:email",
+  "/passwd"
+]
