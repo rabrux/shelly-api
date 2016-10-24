@@ -76,6 +76,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Lorem Files
+annotations
 
 # Conf Files
 src/conf/email.json

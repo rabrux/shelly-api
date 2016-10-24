@@ -14,12 +14,12 @@
 
 * Download Source Code
 ```bash
-> git clone git@github.com:rabrux/shelly-api.git
+> git clone https://github.com/rabrux/shelly-api.git
 ```
 
 * Go to Source Code Directory
 ```bash
-> cd api
+> cd shelly-api
 ```
 
 * Installing NPM Dependencies
@@ -31,6 +31,33 @@
 * Execute API Server
 ```bash
 > npm start
+```
+*Before execute command `npm start` you need to configure the `server.json` and `email.json` files, those files need to be stored in `src/conf` directory*
+
+### Configuration ###
+
+The configuration files are located on `src/conf` directory.
+
+##### server.json example #####
+```json
+{
+  "port"     : 8080,
+  "secret"   : "your_secret_key",
+  "database" : "mongodb://<user>:<password>@<host>:<port>/<database>"
+}
+```
+
+##### email.json example #####
+```json
+{
+  "host"   : "<smtp_host>",
+  "port"   : 465,
+  "secure" : true,
+  "auth"   : {
+    "user" : "<username>",
+    "pass" : "<your_password>"
+  }
+}
 ```
 
 ## Todo ##
