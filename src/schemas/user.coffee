@@ -4,13 +4,15 @@ moment       = require 'moment-timezone'
 module.exports = ( mongoose, bcrypt, mailing ) ->
 
   userSchema = new mongoose.Schema
-    username :
+    email :
       type     : String
       required : true
       unique   : true
     password :
       type     : String
       required : true
+    username :
+      type : String
     key :
       type     : String
       required : true
@@ -62,7 +64,7 @@ module.exports = ( mongoose, bcrypt, mailing ) ->
     user = @
     if user.status == 'EMAIL_PENDING_VALIDATE'
       email = require( '../email-templates/signup' )
-        to  : doc.username
+        to  : doc.email
         key : doc.key
       # Send email
       if email

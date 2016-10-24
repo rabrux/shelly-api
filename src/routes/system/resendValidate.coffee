@@ -3,7 +3,7 @@ validator    = require 'validator'
 
 sendEmail = ( user, mailing, callback ) ->
   email = require( '../../email-templates/signup' )
-    to  : user.username
+    to  : user.email
     key : user.key
   # Send email
   if email
@@ -24,12 +24,12 @@ module.exports = ( router, schemas, mailing ) ->
         success : false
         err     : 'INVALID_EMAIL_ADDRESS'
 
-    schemas.User.findOne { username: req.params.email }, ( err, user ) ->
+    schemas.User.findOne { email: req.params.email }, ( err, user ) ->
       if err then throw err
       if !user
         return res.send
           success : false
-          err     : 'INVALID_USERNAME'
+          err     : 'INVALID_EMAIL'
       else
         if user.status != 'EMAIL_PENDING_VALIDATE'
           return res.send

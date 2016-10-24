@@ -1,11 +1,19 @@
+validator = require 'validator'
+
 module.exports = ( router, schemas ) ->
 
   router.post '/signup', ( req, res ) ->
-    if !req.body.username or !req.body.password
+    if !req.body.email or !req.body.password
       res.send
         success : false
         err     : 'INVALID_DATA'
     else
+
+      if not validator.isEmail( req.body.email )
+        return res.send
+          success : false
+          err     : 'INVALID_EMAIL_ADDRESS'
+
       newUser = new schemas.User( req.body )
 
       # Save user

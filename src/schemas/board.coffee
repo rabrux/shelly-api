@@ -8,14 +8,16 @@ module.exports = ( mongoose ) ->
       type     : String
       required : true
     owner :
-      type : mongoose.Schema.Types.ObjectId
-      ref  : 'user'
-    tags : [
+      type     : mongoose.Schema.Types.ObjectId
+      ref      : 'user'
+      required : true
+    contributors : [
       {
-        type : mongoose.Schema.Types.ObjectId
-        ref  : 'tag'
+        type     : mongoose.Schema.Types.ObjectId
+        ref      : 'user'
       }
     ]
+    tags : [ String ]
     notes : [
       {
         type : mongoose.Schema.Types.ObjectId
@@ -31,6 +33,9 @@ module.exports = ( mongoose ) ->
         ref  : 'history'
       }
     ]
+    open :
+      type    : Boolean
+      default : false
     createdAt :
       type : Number
       default : moment( new Date() ).format( 'x' )

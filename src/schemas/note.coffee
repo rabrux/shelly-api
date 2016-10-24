@@ -10,12 +10,7 @@ module.exports = ( mongoose ) ->
     owner :
       type : mongoose.Schema.Types.ObjectId
       ref  : 'user'
-    tags : [
-      {
-        type : mongoose.Schema.Types.ObjectId
-        ref  : 'tag'
-      }
-    ]
+    tags : [ String ]
     note :
       type     : String
       required : true

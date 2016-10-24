@@ -3,7 +3,7 @@ validator    = require 'validator'
 
 recovery = ( user, mailing, callback ) ->
   email = require( '../../email-templates/recoveryPassword' )
-    to  : user.username
+    to  : user.email
     key : user.key
   # Send email
   if email
@@ -23,12 +23,12 @@ module.exports = ( router, schemas, mailing ) ->
       return res.send
         success : false
         err     : 'INVALID_EMAIL_ADDRESS'
-    schemas.User.findOne { username: req.params.email }, ( err, user ) ->
+    schemas.User.findOne { email: req.params.email }, ( err, user ) ->
       if err then throw err
       if !user
         return res.send
           success : false
-          err     : 'INVALID_USERNAME'
+          err     : 'INVALID_EMAIL'
       else
         switch user.status
           # Deny action to inactive users

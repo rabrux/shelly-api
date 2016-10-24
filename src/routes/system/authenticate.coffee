@@ -1,7 +1,7 @@
 module.exports = ( router, config, schemas, jwt ) ->
 
   router.post '/authenticate', ( req, res ) ->
-    schemas.User.findOne { username: req.body.username }, ( err, user ) ->
+    schemas.User.findOne { email: req.body.email }, ( err, user ) ->
       if err then throw err
       if !user
         res.send

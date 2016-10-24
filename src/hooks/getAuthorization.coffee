@@ -41,7 +41,7 @@ module.exports = ( app, config, schemas, jwt ) ->
           if token
             decoded = jwt.decode token, config.secret
 
-            schemas.User.findOne { username : decoded.username }, ( err, user ) ->
+            schemas.User.findOne { email : decoded.email }, ( err, user ) ->
               if err then throw err
               if !user
                 return res.status( 403 ).send { success : false, err : 'AUTHENTICATION_FAILED', code : 'USER_NOT_FOUND' }

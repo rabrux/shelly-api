@@ -22,7 +22,7 @@
     "coffee-script": "^1.11.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "coffee ./src/index.coffee"
   },
   "repository": {
     "type": "git",

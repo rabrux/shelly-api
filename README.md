@@ -33,6 +33,10 @@
 > npm start
 ```
 
+## Todo ##
+
+* Chat
+
 ## Last Update ##
 
 Last update October 8, 2016
